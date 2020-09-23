@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -40,12 +41,17 @@
 	.title {
 		width: 60%;
 		padding: 12px 20px;
-		margin: 8px 0;
+		margin: -10px 0 10px 0;
 	}
 	.content {
 		width: 60%;
-		padding: 12px 50px;
-		margin: 8px 0;
+		height: 150px;
+		padding: 12px 20px;
+		margin: -10px 0 10px 0;
+	}
+	.btnStyle {
+		display: flex;
+		justify-content: flex-end;
 	}
 	</style>
 	<meta charset="ISO-8859-1">
@@ -54,26 +60,46 @@
 <body>
 	<h1>Crie sua nota</h1>
 	<form action="Cria" method='post'>
-	Titulo <input class="title" type='text' name='titulo'><br>
-	Conteudo <input class="content" type='text' name='conteudo'><br>
-	<input type='submit' value='Criar'>
+	<h4>Titulo</h4>
+	<input class="title" placeholder="digite seu titulo..." type='text' name='titulo'><br>
+	<h4>Conteudo</h4>
+	<input class="content" placeholder="digite o que voce esta pensando..." type='text' name='conteudo'><br>
+	<h4>Prioridade</h4>
+	<input class="title" placeholder="digite a prioridade, de 1 a 3..." type="number" name='prioridade'><br>
+	<input type='submit' value='Criar' class="btnStyle">
 	<br>
 	<hr color="#91433f" size="3" >
 	</form>
-	<h1>Notas</h1>
+	
+	
+	
+	<h1 class="floated">Notas... ou</h1>
+	<form action="Pesquisa" method="post">
+	<input placeholder="pesquise por titulo..." type='text' name='titulo'><br>
+	<input type='submit' value='pesquisar'><br>
+	</form>
 	<c:forEach var="nota" items="${notas}">
+			
 		<div class="box">
 			<h3>${nota.titulo}</h3>
 			<p>${nota.conteudo}</p>
+			<p style='color: red;'>prioridade: ${nota.prioridade}</p>
+			<div>
+				<p style="font-weight: bold; font-size:15px">
+				data de criacao/edicao: <fmt:formatDate value='${nota.data.time}' pattern='dd-MM-yyyy' />
+				</p>
+			</div>
 		</div>
 		<div>
-			<form action='Atualiza' method='get'>
+			<form  action='Atualiza' method='get'>
 			<input type='hidden' name='id' value="${nota.id}" >
 			<input type='hidden' name='titulo' value="${nota.titulo}" >
 			<input type='hidden' name='conteudo' value="${nota.conteudo}" >
+			<input type='hidden' name='data' value="${nota.data}" >
+			<input type='hidden' name='prioridade' value="${nota.prioridade}" >
 			<input class="floated" type="submit" value="Editar" >
 			</form>
-		
+
 			<form action='Remove' method='post'>
 			<input type='hidden' name='id' value="${nota.id}" >
 			<input class="" type="submit" value="Excluir" >
@@ -81,5 +107,13 @@
 			</form>
 		</div>
  	</c:forEach>
+ 	<h1>Categorizacao</h1>
+ 	<p>Quer ver apenas as tarefas mais importantes pra voce? Selecione sua prioridade!</p>
+ 	<form action='Filtra' method='post'>
+ 	<input type='submit' name='prioridade' value='1' > <br>
+ 	<input type='submit' name='prioridade' value='2' > <br>
+ 	<input type='submit' name='prioridade' value='3' > <br>
+ 	</form>
+ 	
 </body>
 </html>

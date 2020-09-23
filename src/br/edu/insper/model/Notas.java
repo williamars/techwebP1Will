@@ -9,6 +9,7 @@ public class Notas {
 	private String titulo;
 	private Calendar data;
 	private Integer person_id;
+	private Integer prioridade;
 	
 	public Integer getId() {
 		return id;
@@ -48,6 +49,14 @@ public class Notas {
 	
 	public void setPerson_id(Integer person_id) {
 		this.person_id = person_id;
+	}
+
+	public Integer getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(Integer prioridade) {
+		this.prioridade = prioridade;
 	}
 
 }

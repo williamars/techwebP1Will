@@ -38,7 +38,21 @@ public class Cria extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		
+		DAO dao;
+		try {
+			dao = new DAO();
+			List<Notas> notas = dao.getLista();
+			request.setAttribute("notas", notas);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/listagem.jsp");
+			dispatcher.forward(request, response);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -50,12 +64,20 @@ public class Cria extends HttpServlet {
 			DAO dao = new DAO();
 			
 			Notas nota = new Notas();
-			nota.setConteudo(request.getParameter("conteudo"));
-			nota.setTitulo(request.getParameter("titulo"));
+			String titulo = request.getParameter("titulo");
+			String conteudo = request.getParameter("conteudo");
+			Integer prioridade = Integer.valueOf(request.getParameter("prioridade"));
+					
+			nota.setConteudo(conteudo);
+			nota.setTitulo(titulo);
+			nota.setPrioridade(prioridade);
 			Integer person_id = 1;
 			nota.setPerson_id(person_id);
 			
-			Date data = new SimpleDateFormat("yyyy-MM-dd").parse("2020-09-22");
+			Date today = new Date();
+			String data_string = new SimpleDateFormat("yyyy-MM-dd").format(today);
+			
+			Date data = new SimpleDateFormat("yyyy-MM-dd").parse(data_string);
 			Calendar data_ = Calendar.getInstance();
 			data_.setTime(data);
 			nota.setData(data_);

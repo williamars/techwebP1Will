@@ -3,18 +3,49 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+.center {
+	display: flex;
+	justify-content: center;	
+}
+footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-right:100px;
+	margin-top: 197px;
+}
+</style>
 </head>
 <body>
- <h1>Adiciona Nome</h1>
- <hr />
- <form action="one">
- Nome: <input type="text" name="nome" /><br />
- Idade: <input type="text" name="idade" /><br />
- Curso: <input type="text" name="curso" /><br />
- <input type="submit" value="Gravar" /> 
- </form>
- <form action="listagem.jsp">
- Bla: <input type="text" name="bla" />
- </form>
+ <div class="center" >
+	 <h1 style="align-self: 'center';">aplicativo de notas</h1>
+ 
+ </div>
+ <hr color="#91433f" size="1.5" width="70%" >
+ <div class="center">
+	 <p>
+	 	seja bem-vindo(a) ao meu primeiro CRUD, um aplicativo de notas.
+	 	Fique a vontade para navegar :)
+	 </p>
+ </div>
+ <div class="center">
+	<p>
+		faça o seu login para acessar suas notas ;)
+	</p> 
+ </div>
+ <div class="center">
+	<form action="Login" method="post">
+	<input type='text' placeholder="user" name='user'><br>
+	<input type='password' placeholder="senha" name='senha'><br>
+	<input type='submit' value='entrar/cadastrar'><br>
+	</form>
+</div>
+ <div class="center">
+	 <form action="Lista">
+	 	<input type="submit" value="minhas notas" />
+	 </form>
+</div>
+<footer>autor: William Silva</footer>
 </body>
 </html>
