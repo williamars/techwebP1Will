@@ -92,6 +92,7 @@
 	<form action="Lista">
 		<input style="margin-left: 565px;" type='submit' value='listar normalmente'><br>
 	</form>
+	<% Integer contador = 0; %>
 	<c:forEach var="nota" items="${notas}">
 			
 		<div class="box">
@@ -120,7 +121,13 @@
 			<hr size="0.7" align="left" width='50%'>
 			</form>
 		</div>
+		<% contador++; %>
  	</c:forEach>
+ 	<%
+ 	if (contador == 0){
+ 		out.print("nao existem notas ainda. Insira acima!");
+ 	}
+ 	%>
  	<h1>Categorizacao</h1>
  	<p>Quer ver apenas as tarefas mais importantes pra voce? Selecione sua prioridade!</p>
  	<form action='Filtra' method='post'>

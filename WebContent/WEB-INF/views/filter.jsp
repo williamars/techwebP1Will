@@ -70,7 +70,7 @@
  	</c:forEach>
  	<%
  	if (contador == 0){
- 		out.print("não há notas nessa prioridade");
+ 		out.print("não ha notas nessa prioridade");
  	}
  	%>
 
