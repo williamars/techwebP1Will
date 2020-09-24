@@ -86,7 +86,7 @@
 		<input type='submit' value='ordenar por data [old-new]'><br>
 	</form>
 	<form action="Lista">
-		<input style="margin-left: 570px;" type='submit' value='listar normalmente'><br>
+		<input style="margin-left: 565px;" type='submit' value='listar normalmente'><br>
 	</form>
 	<c:forEach var="nota" items="${notas}">
 			

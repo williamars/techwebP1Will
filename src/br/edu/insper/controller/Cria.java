@@ -46,6 +46,7 @@ public class Cria extends HttpServlet {
 			request.setAttribute("notas", notas);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/listagem.jsp");
 			dispatcher.forward(request, response);
+			dao.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,7 +72,7 @@ public class Cria extends HttpServlet {
 			nota.setConteudo(conteudo);
 			nota.setTitulo(titulo);
 			nota.setPrioridade(prioridade);
-			Integer person_id = 1;
+			Integer person_id = dao.returnLogado();
 			nota.setPerson_id(person_id);
 			
 			Date today = new Date();

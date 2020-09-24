@@ -4,6 +4,7 @@ public class Login {
 	private int id;
 	private String user;
 	private String senha;
+	private int logado;
 	
 	public int getId() {
 		return id;
@@ -22,6 +23,12 @@ public class Login {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public Integer getLogado() {
+		return logado;
+	}
+	public void setLogado(Integer logado) {
+		this.logado = logado;
 	}
 	
 	

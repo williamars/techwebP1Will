@@ -2,7 +2,10 @@ package br.edu.insper.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,11 +48,36 @@ public class Login extends HttpServlet {
 			
 			String user = request.getParameter("user");
 			String senha = request.getParameter("senha");
+			br.edu.insper.model.Login usuario = new br.edu.insper.model.Login();			
+			usuario.setUser(user);
+			usuario.setSenha(senha);
 			
 			
+			List<br.edu.insper.model.Login> users = new ArrayList<br.edu.insper.model.Login>();
+			users = dao.getUsers();
+			boolean cadastrado = false;
+			
+			for (br.edu.insper.model.Login each : users) {
+				if (each.getUser().contentEquals(usuario.getUser()) && each.getSenha().contentEquals(usuario.getSenha())) {
+					cadastrado = true;
+				}
+			}
 			
 			
+			if (cadastrado) {
+				dao.setLogado(usuario.getUser());
+				
+				List<Notas> notas = dao.getLista();
+				request.setAttribute("notas", notas);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/listagem.jsp");
+				dispatcher.forward(request, response);			
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/index.html");
+				dispatcher.forward(request, response);
+			}
 			
+			dao.close();
+						
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
