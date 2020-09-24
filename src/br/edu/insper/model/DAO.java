@@ -22,10 +22,8 @@ public class DAO {
 		
 		List<Notas> notas = new ArrayList<Notas>();
 		 
-		String sql = "SELECT Nota.id, Nota.conteudo, Nota.titulo, Nota.data, Nota.person_id, Nota.prioridade FROM Nota INNER JOIN Login ON Nota.person_id=Login.id AND Login.logado=1";
-		
-		//String sql = "SELECT * from nota";
-		
+		String sql = "SELECT Nota.id, Nota.conteudo, Nota.titulo, Nota.data, Nota.person_id, "
+				+ "Nota.prioridade FROM Nota INNER JOIN Login ON Nota.person_id=Login.id AND Login.logado=1";		
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 		
