@@ -75,8 +75,18 @@
 	
 	<h1 class="floated">Notas... ou</h1>
 	<form action="Pesquisa" method="post">
-	<input placeholder="pesquise por titulo..." type='text' name='titulo'><br>
-	<input type='submit' value='pesquisar'><br>
+		<input placeholder="pesquise por titulo..." type='text' name='titulo'><br>
+		<input type='submit' value='pesquisar'><br>
+	</form>
+	<h1 class="floated" style="margin-left: 300px; margin-bottom: 30px;">ou...</h1>
+	<form action="OrderPrioridade" method="post">
+		<input type='submit' value='ordernar por prioridade [1-3]'><br>
+	</form>
+	<form action="Order" method="post">
+		<input type='submit' value='ordenar por data [old-new]'><br>
+	</form>
+	<form action="Lista">
+		<input style="margin-left: 570px;" type='submit' value='listar normalmente'><br>
 	</form>
 	<c:forEach var="nota" items="${notas}">
 			

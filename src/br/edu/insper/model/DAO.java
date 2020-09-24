@@ -113,7 +113,6 @@ public class DAO {
 	
 	public List<Notas> pesquisa(String title) throws SQLException{
 		
-		System.out.print("%" + title + "%");
 		
 		List<Notas> notas = new ArrayList<Notas>();
 		
@@ -136,7 +135,56 @@ public class DAO {
 		
 		rs.close();
 		stmt.close();
-		System.out.print(notas);
+		
+		return notas;	
+	}
+	
+	public List<Notas> order() throws SQLException{
+		
+		List<Notas> notas = new ArrayList<Notas>();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Nota ORDER BY data");
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			Notas nota = new Notas();
+			nota.setId(rs.getInt("id"));
+			nota.setConteudo(rs.getString("conteudo"));
+			Calendar data = Calendar.getInstance();
+			data.setTime(rs.getDate("data"));
+			nota.setData(data);
+			nota.setTitulo(rs.getString("titulo"));
+			nota.setPerson_id(rs.getInt("person_id"));
+			nota.setPrioridade(rs.getInt("prioridade"));
+			notas.add(nota);
+		}
+		
+		rs.close();
+		stmt.close();
+		
+		return notas;	
+	}
+	
+public List<Notas> orderPrioridade() throws SQLException{
+		
+		List<Notas> notas = new ArrayList<Notas>();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Nota ORDER BY prioridade");
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			Notas nota = new Notas();
+			nota.setId(rs.getInt("id"));
+			nota.setConteudo(rs.getString("conteudo"));
+			Calendar data = Calendar.getInstance();
+			data.setTime(rs.getDate("data"));
+			nota.setData(data);
+			nota.setTitulo(rs.getString("titulo"));
+			nota.setPerson_id(rs.getInt("person_id"));
+			nota.setPrioridade(rs.getInt("prioridade"));
+			notas.add(nota);
+		}
+		
+		rs.close();
+		stmt.close();
 		
 		return notas;	
 	}
