@@ -58,7 +58,7 @@
 	<title>Notas</title>
 </head>
 <body>
-	<form action="/index.html">
+	<form action="/Projeto/">
 	<input type="submit" value="logout" >
 	</form>
 	
