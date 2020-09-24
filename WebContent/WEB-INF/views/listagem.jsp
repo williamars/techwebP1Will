@@ -58,6 +58,10 @@
 	<title>Notas</title>
 </head>
 <body>
+	<form action="/index.html">
+	<input type="submit" value="logout" >
+	</form>
+	
 	<h1>Crie sua nota</h1>
 	<form action="Cria" method='post'>
 	<h4>Titulo</h4>

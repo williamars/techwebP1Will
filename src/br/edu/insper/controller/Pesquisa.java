@@ -56,9 +56,6 @@ public class Pesquisa extends HttpServlet {
 			dao.close();
 			
 			
-			
-			
-			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
