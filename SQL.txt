@@ -3,23 +3,23 @@ o database e a tabela usada no projeto.
 
 1. CREATE DATABASE Projeto;
 2. USE Projeto;
-3. CREATE TABLE Nota (
-	    id INT NOT NULL AUTO_INCREMENT,
-	    conteudo TEXT NOT NULL,
-	    titulo VARCHAR(255) NOT NULL,
-		data DATE,
-		pessoa_id INT References Login.id,
-		prioridade INT,
-	    PRIMARY KEY (id)
-   );
-   
-4. CREATE TABLE login (
+3. CREATE TABLE Login (
 	    id INT NOT NULL AUTO_INCREMENT,
 	    user VARCHAR(255) NOT NULL,
 	    senha VARCHAR(255) NOT NULL,
 	    logado BIT NOT NULL,
 	    PRIMARY KEY (id)
   );
+4. CREATE TABLE Nota (
+	    id INT NOT NULL AUTO_INCREMENT,
+	    conteudo TEXT NOT NULL,
+	    titulo VARCHAR(255) NOT NULL,
+	    data DATE,
+	    pessoa_id INT References Login.id,
+ 	    prioridade INT,
+	    PRIMARY KEY (id)
+   );
+   
   
   
  Importante ressaltar que não tem um sistema de cadastro, mas sim de login. Logo, é necessário inserir
