@@ -27,7 +27,7 @@ o database e a tabela usada no projeto.
  
  Exemplo:
 
-   INSERT INTO Login (name, senha, logado) values ("camilaAchutti", "blabla", 0);
+   INSERT INTO Login (user, senha, logado) values ("camilaAchutti", "blabla", 0);
    
  
  Com isso, use essas informações para fazer o login na primeira página do projeto!
